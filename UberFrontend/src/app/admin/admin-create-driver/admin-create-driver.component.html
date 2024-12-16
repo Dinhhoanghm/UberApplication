@@ -1,0 +1,99 @@
+<div class="main-page">
+  <app-admin-side-navigation></app-admin-side-navigation>
+  <div class="main-content padding-top-2vh">
+    <div class="bright-orange label-container width-50">
+      <mat-icon matListItemIcon class="person-icon">person_outline</mat-icon>
+      Create Driver/Vehicle
+    </div>
+    <br />
+    <div class="custom-flex">
+      <div class="left">
+        <div class="profile-picture-container">
+          <img [src]="image" class="profile-picture" alt="profile picture" />
+        </div>
+
+        <div id="file-upload" class="flex-row mat-h3 padding-bottom-2vh">
+          <input type="file" class="file-input" (change)="onFileSelected($event)" #fileUpload />
+          <mat-icon>edit</mat-icon>
+          <p (click)="fileUpload.click()" class="font-weight-light">Add profile picture</p>
+        </div>
+
+        <form [formGroup]="createDriverForm" (ngSubmit)="toggleUpdateMode()" class="form-container center-horizontal">
+          <mat-form-field appearance="fill">
+            <mat-label>First Name</mat-label>
+            <input matInput name="name" formControlName="name" /> </mat-form-field
+          ><br />
+          <mat-form-field appearance="fill">
+            <mat-label>Last Name</mat-label>
+            <input matInput name="surname" formControlName="surname" /> </mat-form-field
+          ><br />
+          <mat-form-field appearance="fill">
+            <mat-label>Phone Number</mat-label>
+            <input matInput name="telephoneNumber" formControlName="telephoneNumber" /> </mat-form-field
+          ><br />
+          <mat-form-field appearance="fill">
+            <mat-label>Address</mat-label>
+            <input matInput name="address" formControlName="address" /> </mat-form-field
+          ><br />
+          <mat-form-field appearance="fill">
+            <mat-label>Email</mat-label>
+            <input matInput name="email" formControlName="email" /> </mat-form-field
+          ><br />
+        </form>
+        <br /><br />
+      </div>
+
+      <div class="right">
+        <!--<div class="bright-orange label-container width-30">
+          <mat-icon matListItemIcon class="person-icon">person_outline</mat-icon>
+          Vehicle Details
+        </div><br>-->
+
+        <form
+          [formGroup]="createDriverForm"
+          (ngSubmit)="toggleUpdateMode()"
+          class="form-container center-horizontal padding-right"
+        >
+          <mat-form-field appearance="fill">
+            <mat-label>Vehicle Type</mat-label>
+            <mat-select matInput name="vehicleType">
+              <mat-option value="one">STANDARD</mat-option>
+              <mat-option value="two">LUXURY</mat-option>
+              <mat-option value="three">VAN</mat-option>
+            </mat-select> </mat-form-field
+          ><br />
+          <mat-form-field appearance="fill">
+            <mat-label>Model</mat-label>
+            <input matInput name="model" formControlName="model" /> </mat-form-field
+          ><br />
+
+          <mat-form-field appearance="fill">
+            <mat-label>License Plate Number</mat-label>
+            <input matInput name="licence" formControlName="licence" /> </mat-form-field
+          ><br />
+
+          <mat-form-field appearance="fill">
+            <mat-label>Number of Passenger Seats</mat-label>
+            <input matInput name="seats" formControlName="seats" /> </mat-form-field
+          ><br />
+
+          <mat-checkbox name="babySeat" (click)="toggleBaby()">Baby Seat</mat-checkbox>
+          <mat-checkbox name="petTransport" (click)="togglePet()">Pet Transport</mat-checkbox>
+
+          <div class="buttons">
+            <button
+              mat-button
+              class="bright-orange button-rounded mat-h1"
+              [ngClass]="{ 'bright-orange': true }"
+              type="submit"
+            >
+              <mat-icon class="icon">mode_edit</mat-icon>
+              Create Driver
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<router-outlet></router-outlet>
